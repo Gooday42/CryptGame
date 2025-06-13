@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 33b954454dbce2fbeaceb45900a670e8
+guid: 2974c06166cecf697895bd9d5b8ff501
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4712275357610620062
-    second: Magic_eight_ball_0
+      213: 3332282528543761546
+    second: Holy-Hand-Grenade_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Magic_eight_ball_0
+      name: Holy-Hand-Grenade_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 13
-        width: 871
-        height: 871
+        x: 45
+        y: 3
+        width: 112
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e943536987d556140800000000000000
-      internalID: 4712275357610620062
+      spriteID: a846715fd45ae3e20800000000000000
+      internalID: 3332282528543761546
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Holy-Hand-Grenade_0: 3332282528543761546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

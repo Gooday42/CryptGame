@@ -56,9 +56,9 @@ public class UseItem : MonoBehaviour
                 thisButton.interactable = false;
                 instance = Instantiate(thisItem);
                 instance.SetActive(true);
-                instance.GetComponent<InteractableObj>().enabled = false;
-                instance.GetComponent<Collider2D>().enabled = false;
-                instance.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
+                instance.GetComponent<InteractableObj>().CanShowInfo = false;
+                instance.GetComponent<Collider2D>().isTrigger = false;
+                instance.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.9f);
                 FollowingTheMouse = true;
             }
         }

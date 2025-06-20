@@ -1,3 +1,4 @@
+using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,11 +13,7 @@ public class InteractableObj : MonoBehaviour
     /// text that appears, when you hover over the object
     /// </summary>
     public string infoText;
-
-
-    /// <summary>
-    /// does the object gets in the inventory on click
-    /// </summary>
+    public bool CanShowInfo;
     public bool pickableOnClick = false;
     /// <summary>
     /// The object in the inventory has a use while in inventory
@@ -35,6 +32,8 @@ public class InteractableObj : MonoBehaviour
     /// Event that will occur when the object is interacted while in scene
     /// </summary>
     public UnityEvent eventsOnClick;
+    [SerializedDictionary("Object", "Action")]
+    public  SerializedDictionary<GameObject, UnityEvent> Interactions;
 
     // Animator animator;
 
@@ -68,7 +67,7 @@ public class InteractableObj : MonoBehaviour
     }
     void OnMouseOver()
     {
-        DisplayInfo(true);
+        if(CanShowInfo)DisplayInfo(true);
     }
 
     void OnMouseExit()
@@ -77,6 +76,10 @@ public class InteractableObj : MonoBehaviour
 
     }
 
+    //public GameObject GetItemOnCollision()
+    //{
+        //GetComponent<Collider2D>().
+    //}
     void OnDisable()
     {
         DisplayInfo(false);

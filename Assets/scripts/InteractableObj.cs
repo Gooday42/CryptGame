@@ -1,16 +1,39 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-
+/// <summary>
+/// A Object on Scene that can be interacted with
+/// </summary>
 public class InteractableObj : MonoBehaviour
 {
+
     Collider2D coll;
+    /// <summary>
+    /// text that appears, when you hover over the object
+    /// </summary>
     public string infoText;
 
+
+    /// <summary>
+    /// does the object gets in the inventory on click
+    /// </summary>
     public bool pickableOnClick = false;
+    /// <summary>
+    /// The object in the inventory has a use while in inventory
+    /// </summary>
     public bool KeepToUseInInventory = false;
-    public UnityEvent eventsOnInventorySelect ;
+    /// <summary>
+    /// Event that will occur when the object is used while on inventory
+    /// </summary>
+    public UnityEvent eventsOnInventorySelect;
+
+    /// <summary>
+    /// the object does something on scene
+    /// </summary>
     public bool EventTriggerOnClick = false;
+    /// <summary>
+    /// Event that will occur when the object is interacted while in scene
+    /// </summary>
     public UnityEvent eventsOnClick;
 
     // Animator animator;
@@ -28,15 +51,19 @@ public class InteractableObj : MonoBehaviour
     {
 
     }
-
+    /// <summary>
+    /// When the mouse is clicked invokes the trigger and adds it to the inventory
+    /// </summary>
     void OnMouseDown()
     {
-        if(EventTriggerOnClick)eventsOnClick?.Invoke();
+        if (EventTriggerOnClick) eventsOnClick?.Invoke();
 
         if (pickableOnClick)
         {
             InventoryManager.AddToInventory(this.gameObject);
+
             gameObject.SetActive(false);
+            //Destroy(gameObject); 
         }
     }
     void OnMouseOver()
@@ -47,7 +74,7 @@ public class InteractableObj : MonoBehaviour
     void OnMouseExit()
     {
         DisplayInfo(false);
-        
+
     }
 
     void OnDisable()
@@ -73,7 +100,7 @@ public class InteractableObj : MonoBehaviour
                 // displayer.GetComponent<RectTransform>().pivot = InfoTextPivotPos;
 
             }
-            if(active) displayer.GetComponentInChildren<TMP_Text>().text = infoText;
+            if (active) displayer.GetComponentInChildren<TMP_Text>().text = infoText;
 
         }
     }

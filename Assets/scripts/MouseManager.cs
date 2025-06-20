@@ -4,19 +4,39 @@ using System;
 
 public class MouseManager : MonoBehaviour
 {
+    /// <summary>
+    /// singleton for the manager
+    /// </summary>
     public static MouseManager Instance;
-    
+
+
+    /// <summary>
+    /// Layerfor detectable objects
+    /// </summary>
     [Header("Settings")]
-    [SerializeField] private LayerMask interactableLayers;  // Layers to detect
     
+    [SerializeField] private LayerMask interactableLayers;  // Layers to detect
+
+
+    /// <summary>
+    /// icons to use when the mouse is updated
+    /// </summary>
     [Header("Action Icons")]
     [SerializedDictionary("Action Tag", "Icon")]
     [SerializeField] private SerializedDictionary<string, Sprite> actionIcons;
 
-    // Event to notify when cursor icon changes
-    public event Action<Sprite> OnCursorIconChange;
 
-    private Sprite currentIcon;  // Currently displayed icon
+    /// <summary>
+    /// Event to notify when cursor icon changes
+    /// </summary>
+    public event Action<Sprite> OnCursorIconChange;
+    /// <summary>
+    /// Currently displayed icon
+    /// </summary>
+    private Sprite currentIcon;
+    /// <summary>
+    /// maincamera of the scene
+    /// </summary>
     private Camera mainCamera;
 
     void Awake()
@@ -32,11 +52,17 @@ public class MouseManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// setting for the icons and the camera
+    /// </summary>
+
     void Start()
     {
         mainCamera = Camera.main;
         currentIcon = null;
     }
+
+    
 
     void Update()
     {
@@ -44,12 +70,19 @@ public class MouseManager : MonoBehaviour
         CheckObjectUnderMouse();
     }
 
+    /// <summary>
+    /// Create ray for debugging/other uses
+    /// </summary>
+
     private void UpdateMouseRay()
     {
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        // Create ray for debugging/other uses
         whatIsOverMouse = new Ray2D(mousePosition, Vector2.zero);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
 
     private void CheckObjectUnderMouse()
     {
@@ -57,7 +90,7 @@ public class MouseManager : MonoBehaviour
         Collider2D hit = Physics2D.OverlapPoint(mousePos, interactableLayers);
 
         Sprite newIcon = null;
-        
+
         if (hit != null)
         {
             // Check if object's tag has an associated icon

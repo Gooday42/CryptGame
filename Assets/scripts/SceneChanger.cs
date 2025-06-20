@@ -1,4 +1,3 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class SceneChanger : MonoBehaviour
@@ -9,8 +8,8 @@ public class SceneChanger : MonoBehaviour
     {
         if (!scene) return;
 
-        Camera.main.gameObject.transform.position = new Vector3(0, 0,-10);
-        SceneManager.ChangeBackground (scene);
+        Camera.main.gameObject.transform.position = new Vector3(0, 0, -10);
+        SceneManager.ChangeBackground(scene);
         scene.SetActive(true);
         transform.parent.gameObject.SetActive(false);
     }

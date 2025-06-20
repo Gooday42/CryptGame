@@ -15,7 +15,7 @@ public class UseItem : MonoBehaviour
     {
         TryGetComponent<Button>(out thisButton);
 
-        thisButton.onClick.AddListener(() => TryToUse());   
+        thisButton.onClick.AddListener(() => TryToUse());
     }
     public void TryToUse()
     {
@@ -65,7 +65,7 @@ public class UseItem : MonoBehaviour
 
     }
     private void CheckInteractions()
-    {   
+    {
         FollowingTheMouse = false;
         thisButton.interactable = true;
         InventoryManager.usingAnItem = false;
@@ -79,7 +79,7 @@ public class UseItem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-               CheckInteractions();
+                CheckInteractions();
             }
         }
     }

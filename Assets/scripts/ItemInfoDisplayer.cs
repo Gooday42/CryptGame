@@ -14,13 +14,12 @@ public class ItemInfoDisplayer : MonoBehaviour
         if (infoPanel.activeSelf)
         {
 
-                Vector3 mousePos = Camera.main.WorldToViewportPoint((Vector2) Input.mousePosition);
-                Vector3 InfoTextPivotPos = new Vector3(0,0,0);
+            Vector3 mousePos = Camera.main.WorldToViewportPoint((Vector2)Input.mousePosition);
+            Vector3 InfoTextPivotPos = Vector3.zero;
 
-                if (mousePos.x > 0.5) InfoTextPivotPos.x = 1.0f; else InfoTextPivotPos.x = 0f;
-                if (mousePos.y > 0.5) InfoTextPivotPos.y = 1.0f; else InfoTextPivotPos.y = 0f;
-
-                infoPanel.GetComponent<RectTransform>().pivot = InfoTextPivotPos;
+            InfoTextPivotPos.x = mousePos.x > 0.5 ? 1.0f : 0f;
+            InfoTextPivotPos.y = mousePos.y > 0.5 ? 1.0f : 0f;
+            infoPanel.GetComponent<RectTransform>().pivot = InfoTextPivotPos;
             infoPanel.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
 
         }

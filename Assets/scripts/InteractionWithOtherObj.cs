@@ -11,7 +11,7 @@ public class InteractionWithOtherObj : MonoBehaviour
     {
         if (InventoryManager.usingAnItem && InventoryManager.CheckIfInInventory(gameObject))
         {
-            
+
         }
     }
 }

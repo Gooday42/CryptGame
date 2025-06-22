@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UseItem : MonoBehaviour
+public class Inventariobject : MonoBehaviour
 {
     Button thisButton;
     bool FollowingTheMouse = false;

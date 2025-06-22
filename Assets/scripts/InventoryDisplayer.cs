@@ -23,7 +23,7 @@ public class InventoryDisplayer : MonoBehaviour
         foreach (GameObject item in InventoryManager.GetInventory())
         {
             transform.GetChild(i).GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
-            transform.GetChild(i).GetComponent<UseItem>().thisItem = item;
+            transform.GetChild(i).GetComponent<Inventariobject>().thisItem = item;
             
             i++;
         }

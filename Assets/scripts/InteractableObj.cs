@@ -82,6 +82,10 @@ public class InteractableObj : MonoBehaviour
         DisplayInfo(false);
 
     }
+    /// <summary>
+    /// show info about the object
+    /// </summary>
+    /// <param name="active"> is the description active </param>
     private void DisplayInfo(bool active)
     {
         if (infoText != "")
@@ -91,13 +95,13 @@ public class InteractableObj : MonoBehaviour
             {
                 displayer.infoPanel.SetActive(active);
 
-                // Vector3 mousePos = Camera.main.ViewportPointToRay(Input.mousePosition).origin;
-                // Vector3 InfoTextPivotPos = new Vector3(0,0,0);
+                //Vector3 mousePos = Camera.main.ViewportPointToRay(Input.mousePosition).origin;
+                //Vector3 InfoTextPivotPos = new Vector3(0, 0, 0);
 
-                // if (mousePos.x > 0.5) InfoTextPivotPos.x = 1.0f; else InfoTextPivotPos.x = 0f;
-                // if (mousePos.y > 0.5) InfoTextPivotPos.y = 1.0f; else InfoTextPivotPos.y = 0f;
+                //if (mousePos.x > 0.5) InfoTextPivotPos.x = 1.0f; else InfoTextPivotPos.x = 0f;
+                //if (mousePos.y > 0.5) InfoTextPivotPos.y = 1.0f; else InfoTextPivotPos.y = 0f;
 
-                // displayer.GetComponent<RectTransform>().pivot = InfoTextPivotPos;
+                //displayer.GetComponent<RectTransform>().pivot = InfoTextPivotPos;
 
             }
             if (active) displayer.GetComponentInChildren<TMP_Text>().text = infoText;

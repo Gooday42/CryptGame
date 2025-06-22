@@ -7,14 +7,7 @@ using UnityEngine;
 /// </summary>
 public class InventoryManager : MonoBehaviour
 {
-    /// <summary>
-    /// singleton of the inventory manager, not used
-    /// </summary>
-    public static InventoryManager Instance; // seems redundant https://discussions.unity.com/t/solved-do-static-variables-behave-reliable-on-scene-swap/826555/4
-
-    //if all the inventory is going to be static, then it doesnt need to have a singleton, even the its not even been called, buet yeah even in 
-    // scene changes the static values remain so it shouldnt be necessary to create a singleton or for the object to stay loaded
-
+    
 
     /// <summary>
     /// List of Objects inside the inventrory of the player
@@ -29,26 +22,7 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     public static bool usingAnItem = false;
 
-    /// <summary>
-    /// creating the singleton for the inventory, not neccesary
-    /// </summary>
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Update()
-    {
-        print(OnInventoryChange);
-    }
+    
 
     /// <summary>
     /// Adds a item to the inventory

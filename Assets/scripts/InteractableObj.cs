@@ -36,13 +36,15 @@ public class InteractableObj : MonoBehaviour
     /// </summary>
     public UnityEvent eventsOnClick;
 
+    [SerializeField] private GameObject invObjct;
+
     // Animator animator;
 
 
     void Start()
     {
         TryGetComponent<Collider2D>(out coll);
-
+        invObjct = invObjct == null? this.gameObject: invObjct;
         // TryGetComponent<Animator>(out animator);
     }
 
@@ -60,7 +62,7 @@ public class InteractableObj : MonoBehaviour
 
         if (pickableOnClick)
         {
-            InventoryManager.AddToInventory(this.gameObject);
+            InventoryManager.AddToInventory(invObjct);
 
             gameObject.SetActive(false);
             //Destroy(gameObject); 

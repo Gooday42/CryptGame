@@ -11,7 +11,7 @@ public class InventoryDisplayer : MonoBehaviour
     /// </summary>
     private void Start() {
         InventoryManager.OnInventoryChange += updateDisplay;
-
+        updateDisplay();
     }
 
     /// <summary>
@@ -24,11 +24,16 @@ public class InventoryDisplayer : MonoBehaviour
 
         {
             item.transform.SetParent(transform.GetChild(i), false);
+            transform.GetChild(i).GetComponent<Button>().interactable = true;
 
             //transform.GetChild(i).GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
             //transform.GetChild(i).GetComponent<UseItem>().thisItem = item;
             
             i++;
+        }
+        for (; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<Button>().interactable = false;
         }
     }
 

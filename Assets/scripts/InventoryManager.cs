@@ -28,7 +28,7 @@ public class InventoryManager : MonoBehaviour
     {
         GameObject invAdd = Instantiate(toAdd);
 
-        Destroy(toAdd );
+        //Destroy(toAdd);
         Inventory.Add(invAdd);
 
         print(invAdd.name);

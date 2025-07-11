@@ -895,7 +895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589d811089aa3fcd28955cf100b38172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: 
   infoText: May your luck 8e here?
+  CanShowInfo: 0
   pickableOnClick: 1
   KeepToUseInInventory: 1
   eventsOnInventorySelect:
@@ -2364,7 +2366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589d811089aa3fcd28955cf100b38172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: 
   infoText: GOLEMOOOON
+  CanShowInfo: 0
   pickableOnClick: 0
   KeepToUseInInventory: 0
   eventsOnInventorySelect:
@@ -5656,12 +5660,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589d811089aa3fcd28955cf100b38172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: Granada
   infoText: "Y el Se\xF1or habl\xF3, diciendo: \xABPrimero sacar\xE1s el Santo Alfiler.
     Luego contar\xE1s hasta tres, ni m\xE1s ni menos. Tres ser\xE1 el n\xFAmero que
     contar\xE1s, y el n\xFAmero de la cuenta ser\xE1 tres. No contar\xE1s cuatro,
     ni dos, excepto que luego procedas a tres. Cinco est\xE1 descartado. Una vez
     que llegues al n\xFAmero tres, que es el tercer n\xFAmero, lanza tu Santa Granada
     de Antioqu\xEDa hacia tu enemigo, quien, siendo malo a mis ojos, la apagar\xE1\xBB."
+  CanShowInfo: 0
   pickableOnClick: 1
   KeepToUseInInventory: 0
   eventsOnInventorySelect:
@@ -5954,7 +5960,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589d811089aa3fcd28955cf100b38172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: 
   infoText: Miau
+  CanShowInfo: 0
   pickableOnClick: 1
   KeepToUseInInventory: 0
   eventsOnInventorySelect:
@@ -7102,7 +7110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589d811089aa3fcd28955cf100b38172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: Gato
   infoText: Un gato que hace Oiiuaoaiaueo
+  CanShowInfo: 0
   pickableOnClick: 0
   KeepToUseInInventory: 0
   eventsOnInventorySelect:
@@ -7125,7 +7135,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   Interactions:
-    _serializedList: []
+    _serializedList:
+    - Key: {fileID: 1704271253}
+      Value:
+        m_PersistentCalls:
+          m_Calls: []
 --- !u!1 &2024365770
 GameObject:
   m_ObjectHideFlags: 0

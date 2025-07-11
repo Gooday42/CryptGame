@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UseItem : MonoBehaviour
@@ -66,6 +67,7 @@ public class UseItem : MonoBehaviour
     }
     private void CheckInteractions()
     {
+
         FollowingTheMouse = false;
         thisButton.interactable = true;
         InventoryManager.usingAnItem = false;

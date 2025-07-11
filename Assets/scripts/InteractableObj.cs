@@ -12,6 +12,7 @@ public class InteractableObj : MonoBehaviour
     /// <summary>
     /// text that appears, when you hover over the object
     /// </summary>
+    public string objName;
     public string infoText;
     public bool CanShowInfo;
     public bool pickableOnClick = false;

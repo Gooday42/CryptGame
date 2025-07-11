@@ -27,7 +27,7 @@ public class InventoryManager : MonoBehaviour
     /// <summary>
     /// A indicator for the time a item is being used
     /// </summary>
-    public static bool usingAnItem = false;
+    public static GameObject usingAnItem;
 
     /// <summary>
     /// creating the singleton for the inventory, not neccesary
@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        print(OnInventoryChange);
+        //print(OnInventoryChange);
     }
 
     /// <summary>
@@ -60,7 +60,12 @@ public class InventoryManager : MonoBehaviour
         print(toAdd.name);
         OnInventoryChange?.Invoke();
     }
-
+    public static void removeToInventory(GameObject toRemove)
+    {
+        Inventory.Remove(toRemove);
+        print(toRemove.name);
+        OnInventoryChange?.Invoke();
+    }
     /// <summary>
     /// Check if a item is in the inventory
     /// </summary>

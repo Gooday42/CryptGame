@@ -15,7 +15,7 @@ public class InteractableObj : MonoBehaviour
     public string objName;
     public string infoText;
     public bool CanShowInfo;
-    public bool pickableOnClick = false;
+    public bool pickableOnClick = false;    
     /// <summary>
     /// The object in the inventory has a use while in inventory
     /// </summary>
@@ -33,8 +33,8 @@ public class InteractableObj : MonoBehaviour
     /// Event that will occur when the object is interacted while in scene
     /// </summary>
     public UnityEvent eventsOnClick;
-    [SerializedDictionary("Object", "Action")]
-    public  SerializedDictionary<GameObject, UnityEvent> Interactions;
+    [SerializedDictionary("Name", "Action")]
+    public  SerializedDictionary<string, UnityEvent> Interactions;
 
     // Animator animator;
 
@@ -56,6 +56,15 @@ public class InteractableObj : MonoBehaviour
     /// </summary>
     void OnMouseDown()
     {
+        if (InventoryManager.usingAnItem != null)
+        {
+            if (Interactions.ContainsKey(InventoryManager.usingAnItem.GetComponent<InteractableObj>().objName))
+            {
+                Interactions[InventoryManager.usingAnItem.GetComponent<InteractableObj>().objName].Invoke();
+                InventoryManager.removeToInventory(InventoryManager.usingAnItem);
+            }
+        }
+
         if (EventTriggerOnClick) eventsOnClick?.Invoke();
 
         if (pickableOnClick)

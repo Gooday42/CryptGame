@@ -1,3 +1,4 @@
+using System.Collections;
 using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,19 +22,17 @@ public class UseItem : MonoBehaviour
     public void TryToUse()
     {
 
-        if (InventoryManager.usingAnItem && instance != null)
+        if (InventoryManager.usingAnItem != null && instance != null)
         {
             if (!instance.activeSelf) return;
             instance.SetActive(!instance.activeSelf);
-            InventoryManager.usingAnItem = false;
+            InventoryManager.usingAnItem = null;
             return;
 
         }
 
-        if (!InventoryManager.usingAnItem && thisItem != null)
+        if (InventoryManager.usingAnItem == null && thisItem != null)
         {
-            InventoryManager.usingAnItem = true;
-
             if (thisItem.GetComponent<InteractableObj>().KeepToUseInInventory)
             {
                 //thisButton.interactable = false;
@@ -45,12 +44,16 @@ public class UseItem : MonoBehaviour
                     instance.GetComponent<Collider2D>().enabled = false;
                     instance.GetComponent<SpriteRenderer>().enabled = false;
                     instance.GetComponent<InteractableObj>().eventsOnInventorySelect?.Invoke();
+                    InventoryManager.usingAnItem = instance;
+
                     return;
                 }
 
                 instance.SetActive(true);
-                if (instance.activeSelf) instance.GetComponent<InteractableObj>().eventsOnInventorySelect?.Invoke();
-
+                if (instance.activeSelf)
+                {
+                    instance.GetComponent<InteractableObj>().eventsOnInventorySelect?.Invoke();
+                }
             }
             else
             {
@@ -61,30 +64,39 @@ public class UseItem : MonoBehaviour
                 instance.GetComponent<Collider2D>().isTrigger = false;
                 instance.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.9f);
                 FollowingTheMouse = true;
+
+                InventoryManager.usingAnItem = instance;
+
             }
         }
 
     }
     private void CheckInteractions()
     {
-
         FollowingTheMouse = false;
         thisButton.interactable = true;
-        InventoryManager.usingAnItem = false;
-        Destroy(instance);
+        InventoryManager.usingAnItem = null;
     }
     private void FixedUpdate()
     {
         if (FollowingTheMouse)
         {
-            instance.transform.position = (Vector2)Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-
             if (Input.GetMouseButtonDown(0))
             {
-                CheckInteractions();
+                StartCoroutine(WaitUntilAllInteractionCheck());
+                thisButton.interactable = true;
+
             }
+
+            if(InventoryManager.usingAnItem != null) instance.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+
         }
     }
 
-
-}
+    IEnumerator WaitUntilAllInteractionCheck()
+    {
+        yield return new WaitForSeconds(0.1f);
+        InventoryManager.usingAnItem = null;
+        Destroy(instance);
+    }
+}   
